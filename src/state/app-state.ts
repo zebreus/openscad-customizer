@@ -2,8 +2,42 @@
 
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 
-export type MultiLayoutComponentId = 'editor' | 'viewer' | 'customizer';
+export type MultiLayoutComponentId = 'editor' | 'viewer' | 'customizer' | 'assistant';
 export type SingleLayoutComponentId = MultiLayoutComponentId;
+
+export type MessageContent = string | ({
+  type: 'text'
+  text: string,
+} | {
+  type: 'image_url',
+  image_url: {
+    url: string,
+    detail?: 'low' | 'auto' | 'high',
+  },
+})[]
+
+export type ToolCall = {
+  id: string,
+  type: 'function',
+  function: {
+    name: string,
+    arguments: string,
+  }
+}
+
+export type Message = ({
+  role: 'user' | 'system',
+  content: MessageContent,
+} | {
+  role: 'tool',
+  name: string,
+  tool_call_id: string,
+  content: MessageContent,
+} | {
+  role: 'assistant',
+  content: MessageContent | null,
+  tool_calls?: ToolCall[],
+})
 
 export interface State {
   params: {
@@ -25,6 +59,12 @@ export interface State {
     showAxes?: boolean,
     showShadows?: boolean,
     lineNumbers?: boolean,
+  }
+
+  assistant: {
+    messages: Message[],
+    generating_response?: boolean,
+    status?: 'Rendering STL' | 'Rendering PNG' | 'Asking Model',
   }
 
   lastCheckerRun?: {

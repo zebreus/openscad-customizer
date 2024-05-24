@@ -1,10 +1,11 @@
 // Portions of this file are Copyright 2021 Google LLC, and licensed under GPL2+. See COPYING.
 
 import React, { CSSProperties, useEffect, useState } from 'react';
-import {MultiLayoutComponentId, State, StatePersister} from '../state/app-state'
+import {MultiLayoutComponentId, SingleLayoutComponentId, State, StatePersister} from '../state/app-state'
 import { Model } from '../state/model';
 import EditorPanel from './EditorPanel';
 import ViewerPanel from './ViewerPanel';
+import AssistantPanel from './AssistantPanel';
 import Footer from './Footer';
 import { ModelContext, FSContext } from './contexts';
 import PanelSwitcher from './PanelSwitcher';
@@ -21,21 +22,30 @@ export function App({initialState, statePersister, fs}: {initialState: State, st
   const model = new Model(fs, state, setState, statePersister);
   useEffect(() => model.init());
 
-  const zIndexOfPanelsDependingOnFocus = {
+  const zIndexOfPanelsDependingOnFocus: {[k in SingleLayoutComponentId]: {[kk in SingleLayoutComponentId]?: number} } = {
     editor: {
       editor: 3,
       viewer: 1,
       customizer: 0,
+      assistant: 3,
     },
     viewer: {
       editor: 2,
       viewer: 3,
       customizer: 2,
+      assistant: undefined,
     },
     customizer: {
       editor: 0,
       viewer: 0,
       customizer: 3,
+      assistant: 3,
+    },
+    assistant: {
+      editor: undefined,
+      viewer: undefined,
+      customizer: undefined,
+      assistant: 3,
     }
   }
 
@@ -43,16 +53,17 @@ export function App({initialState, statePersister, fs}: {initialState: State, st
   const mode = state.view.layout.mode;
   function getPanelStyle(id: MultiLayoutComponentId): CSSProperties {
     if (layout.mode === 'multi') {
-      const itemCount = (layout.editor ? 1 : 0) + (layout.viewer ? 1 : 0) + (layout.customizer ? 1 : 0)
+      const itemCount = (layout.editor ? 1 : 0) + (layout.viewer ? 1 : 0) + (layout.customizer ? 1 : 0) + (layout.assistant ? 1 : 0)
       return {
         flex: 1,
         maxWidth: Math.floor(100/itemCount) + '%',
         display: (state.view.layout as any)[id] ? 'flex' : 'none'
       }
     } else {
-      return {
+      const idx = zIndexOfPanelsDependingOnFocus[id][layout.focus]
+      return idx == null ? {display: 'none'} : {
         flex: 1,
-        zIndex: Number((zIndexOfPanelsDependingOnFocus as any)[id][layout.focus]),
+        zIndex: idx,
       }
     }
   }
@@ -78,6 +89,7 @@ export function App({initialState, statePersister, fs}: {initialState: State, st
               ${layout.mode === 'single' ? 'absolute-fill' : ''}
             `} style={getPanelStyle('editor')} />
             <ViewerPanel className={layout.mode === 'single' ? `absolute-fill` : ''} style={getPanelStyle('viewer')} />
+            <AssistantPanel className={layout.mode === 'single' ? `absolute-fill` : ''} style={getPanelStyle('assistant')} />
             {/* <CustomizerPanel className={`${getPanelClasses('customizer')} absolute-fill`} style={getPanelStyle('customizer')} /> */}
           </div>
 

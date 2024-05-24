@@ -38,6 +38,9 @@ export function readStateFromFragment(): State | null {
           showAxes: validateBoolean(view?.layout?.showAxis, () => true),
           showShadows: validateBoolean(view?.layout?.showShadow, () => true),
           lineNumbers: validateBoolean(view?.layout?.lineNumbers, () => false)
+        },
+        assistant: {
+          messages: []
         }
       };
     } catch (e) {

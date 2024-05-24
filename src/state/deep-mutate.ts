@@ -27,7 +27,8 @@ function collectObjectEntriesDeeply(o: KVObject, out: KVEntriesMap = new Map()):
       continue;
     }
     if (v instanceof RegExp ||
-      v instanceof Blob) {
+      v instanceof Blob || 
+      v == null) {
       continue;
     }
     collectObjectEntriesDeeply(v, out);

@@ -1,7 +1,8 @@
 // Portions of this file are Copyright 2021 Google LLC, and licensed under GPL2+. See COPYING.
 
 import defaultScad from './default-scad';
-import { State } from './app-state';
+import { Message, State } from './app-state';
+import { SYSTEM_MESSAGE } from '../components/AssistantPanel';
 
 export const defaultSourcePath = '/playground.scad';
 export const defaultModelColor = '#f9d72c';
@@ -18,6 +19,11 @@ export const blankProjectState: State = {
       mode: 'single',
       focus: 'editor'
     }
+  },
+  assistant: {
+    messages: [
+      SYSTEM_MESSAGE,
+    ]
   }
 };
 
@@ -39,11 +45,38 @@ export function createInitialState(fs: any, state: State | null) {
         editor: true,
         viewer: true,
         customizer: false,
+        assistant: true,
       } as any,
 
       color: defaultModelColor,
     },
-    ...(state ?? {})
+    ...(state ?? {}),
+
+    assistant: {
+      messages: [
+        SYSTEM_MESSAGE,
+        // {
+        //   "role": "user",
+        //   "content": "a cube",
+        // },
+        // {
+        //   "role": "assistant",
+        //   "content": null,
+        //   "tool_calls": [
+        //     {
+        //       "id": "call_m4d0KY8ySP00aMfMXxcuK6Is",
+        //       "type": "function",
+        //       "function": {
+        //         "name": "render_openscad_to_image",
+        //         "arguments": "{\n    \"source\": \"cube([10, 10, 10]);\"\n}"
+        //       }
+        //     }
+        //   ]
+        // }
+      ]
+    },
+
+    // ...(state ?? {})
   };
 
   if (initialState.view.layout.mode != mode) {
@@ -52,7 +85,8 @@ export function createInitialState(fs: any, state: State | null) {
         mode,
         editor: true,
         viewer: true,
-        customizer: initialState.view.layout.focus == 'customizer'
+        customizer: initialState.view.layout.focus == 'customizer',
+        assistant: initialState.view.layout.focus == 'assistant'
       }
     } else if (mode === 'single' && initialState.view.layout.mode === 'multi') {
       initialState.view.layout = {

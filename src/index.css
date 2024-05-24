@@ -12,3 +12,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.message {
+  margin: 0.5em;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+}
+.tool-call {
+  font-family: monospace;
+  font-size: 0.8em;
+}
+
+.role-system {
+  background-color: #f0f0f0;
+}
+.role-tool {
+  background-color: #f0f0ff;
+}
+.role-user, .role-tool {
+  text-align: right;
+  background-color: #f0f0ff;
+}
+.role-assistant {
+  background-color: #f0fff0;
+}

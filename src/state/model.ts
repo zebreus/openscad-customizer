@@ -67,6 +67,7 @@ export class Model {
           editor: s.view.layout.focus === 'editor',
           viewer: s.view.layout.focus === 'viewer',
           customizer: s.view.layout.focus === 'customizer',
+          assistant: s.view.layout.focus === 'assistant',
         }
     });
   }
@@ -84,7 +85,7 @@ export class Model {
     this.mutate(s => {
       if (s.view.layout.mode !== 'multi') throw new Error('Wrong mode');
       s.view.layout[target] = visible
-      if ((s.view.layout.customizer ? 1 : 0) + (s.view.layout.editor ? 1 : 0) + (s.view.layout.viewer ? 1 : 0) == 0) {
+      if ((s.view.layout.customizer ? 1 : 0) + (s.view.layout.editor ? 1 : 0) + (s.view.layout.viewer ? 1 : 0) + (s.view.layout.assistant ? 1 : 0) == 0) {
         // Select at least one panel
         // s.view.layout.editor = true;
         s.view.layout[target] = !visible;

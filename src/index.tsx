@@ -47,7 +47,7 @@ declare var BrowserFS: BrowserFSInterface
     try {
       const data = JSON.parse(new TextDecoder("utf-8").decode(fs.readFileSync('/state.json')));
       const {view, params} = data
-      persistedState = {view, params};
+      persistedState = {view, params, assistant: {messages: []}};
     } catch (e) {
       console.log('Failed to read the persisted state from local storage.', e)
     }

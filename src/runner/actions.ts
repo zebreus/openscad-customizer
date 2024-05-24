@@ -50,9 +50,7 @@ export type RenderArgs = {
   extraArgs?: string[],
   isPreview: boolean
 }
-export const render =
- turnIntoDelayableExecution(renderDelay, ({sourcePath, source, isPreview, features, extraArgs}: RenderArgs) => {
-
+export const raw_render = ({sourcePath, source, isPreview, features, extraArgs}: RenderArgs) => {
     const prefixLines: string[] = [];
     if (isPreview) {
       prefixLines.push('$preview=true;');
@@ -115,4 +113,6 @@ export const render =
 
       return () => job.kill()
     });
-  });
+  };
+
+export const render = turnIntoDelayableExecution(renderDelay, raw_render);

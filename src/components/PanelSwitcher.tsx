@@ -17,6 +17,7 @@ export default function PanelSwitcher() {
     { id: 'editor', icon: 'pi pi-pencil', label: 'Edit' },
     { id: 'viewer', icon: 'pi pi-box', label: 'View' },
     { id: 'customizer', icon: 'pi pi-sliders-h', label: 'Customize' },
+    { id: 'assistant', icon: 'pi pi-prime', label: 'Assist' },
   ];
   const multiTargets = singleTargets;
 
