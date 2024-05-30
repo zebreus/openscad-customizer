@@ -20,7 +20,7 @@
     "primereact": "9.3.x",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-stl-viewer": "^2.2.5",
+    "react-stl-viewer": "^2.5.0",
     "react-widgets": "^5.8.4"
   },
   "scripts": {

@@ -18,6 +18,7 @@ public: \
 		public/libraries/NopSCADlib.zip \
 		public/libraries/BOSL.zip \
 		public/libraries/BOSL2.zip \
+		public/libraries/constructive.zip \
 		public/libraries/funcutils.zip \
 		public/libraries/FunctionalOpenSCAD.zip \
 		public/libraries/YAPP_Box.zip \
@@ -88,6 +89,14 @@ libs/BOSL:
 public/libraries/BOSL.zip: libs/BOSL
 	mkdir -p public/libraries
 	( cd libs/BOSL ; zip -r ../../public/libraries/BOSL.zip *.scad LICENSE )
+
+# https://github.com/solidboredom/constructive
+libs/constructive: 
+	git clone --recurse https://github.com/solidboredom/constructive.git ${SHALLOW} ${SINGLE_BRANCH_MAIN} $@
+
+public/libraries/constructive.zip: libs/constructive
+	mkdir -p public/libraries
+	( cd libs/constructive ; zip -r ../../public/libraries/constructive.zip sources/*.scad examples cad_kickstart LICENSE )
 
 libs/NopSCADlib: 
 	git clone --recurse https://github.com/nophead/NopSCADlib.git ${SHALLOW} ${SINGLE_BRANCH} $@

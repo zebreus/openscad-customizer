@@ -47,6 +47,7 @@ The WASM build was made possible by https://github.com/DSchroer/openscad-wasm.
   + [UB.scad](#ubscad)
   + [pathbuilder](#pathbuilder)
   + [openscad_attachable_text3d](#openscad_attachable_text3d)
+  + [constructive](#constructive)
 
 ## Manifold
 
@@ -773,6 +774,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
+
+## constructive
+  
+https://github.com/solidboredom/constructive
+
+Dual licensed under GPL-2.0  and CERN-OHL-W licenses
+
+Since we "can choose between one of them if [we] use this work.", we pick CERN-OHL-W in the playground (GPL2.0 not compatible w/ GPL3.0)
 
 ## openscad_attachable_text3d
 
