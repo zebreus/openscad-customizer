@@ -2,7 +2,9 @@
 
 import { deployedArchiveNames, zipArchives } from "./zip-archives";
 
-declare var BrowserFS: BrowserFSInterface
+// declare var BrowserFS: BrowserFSInterface
+import fs from '@zenfs/core';
+import { Zip } from '@zenfs/zip';
 
 export type FSMounts = {
   [n: string]: {fs: string, options: {zipData: Buffer}}

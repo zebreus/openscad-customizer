@@ -19,6 +19,7 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import "primeflex/primeflex.min.css";
+import fs from '@zenfs/core'; // You can also use the named export, `fs`
 
 const log = debug('app:log');
 
@@ -29,7 +30,7 @@ if (process.env.NODE_ENV !== 'production') {
   debug.disable();
 }
 
-declare var BrowserFS: BrowserFSInterface
+// declare var BrowserFS: BrowserFSInterface
 
 
 (async () => {
