@@ -81,7 +81,6 @@ export function App({initialState, statePersister, fs}: {initialState: State, st
             flex: 1,
           }}>
           
-          <PanelSwitcher />
     
           <div className={mode === 'multi' ? 'flex flex-row' : 'flex flex-column'}
               style={mode === 'multi' ? {flex: 1} : {
