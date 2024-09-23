@@ -12,7 +12,7 @@ export const blankProjectState: State = {
     sources: [{ path: defaultSourcePath, content: "" }],
     features: [],
     renderFormat: "glb",
-    exportFormat: "glb",
+    exportFormat: "stl",
   },
   view: {
     color: defaultModelColor,
@@ -35,7 +35,7 @@ export function createInitialState(fs: any, state: State | null) {
       sources: [{ path: defaultSourcePath, content: defaultScad }],
       features: [],
       renderFormat: "glb",
-      exportFormat: "glb",
+      exportFormat: "stl",
       extruderColors: state?.params?.extruderColors,
     },
     view: {
