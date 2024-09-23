@@ -44,7 +44,7 @@ jobs:
           sudo apt install -y zip wget git make
       - name: Build with next
         run: |
-          sed -i 's|INSERT_URL_HERE|${{ steps.configure-pages.outputs.base_path }}|' package.json
+          sed -i 's|INSERT_URL_HERE|${{ steps.configure-pages.outputs.base_url }}|' package.json
           make public
           npm run build
           touch dist/.nojekyll
