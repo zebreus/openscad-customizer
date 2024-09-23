@@ -41,7 +41,7 @@ jobs:
         run: npm install
       - name: Install more dependencies
         run: |
-          apt install -y zip wget git make
+          sudo apt install -y zip wget git make
       - name: Build with next
         run: |
           sed -i 's|INSERT_URL_HERE|${{ steps.configure-pages.outputs.base_path }}|' package.json
