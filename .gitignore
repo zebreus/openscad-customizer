@@ -1,9 +1,11 @@
 node_modules
-libs
-dist
+libs/*
+dist/*
 public/libraries
 public/openscad.js
 public/openscad.wasm
 src/wasm
 package-lock.json
 .DS_Store
+!/libs/openscad-wasm
+!/dist/openscad-wasm.zip
