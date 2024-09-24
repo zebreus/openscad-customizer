@@ -45,6 +45,7 @@ jobs:
       - name: Build with next
         run: |
           sed -i 's|INSERT_URL_HERE|${{ steps.configure-pages.outputs.base_url }}/|' package.json
+          sed -i 's|"homepage": "http://|"homepage": "https://|' package.json
           make public
           npm run build
           touch dist/.nojekyll
