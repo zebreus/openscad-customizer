@@ -10,6 +10,7 @@ import { ModelContext, FSContext } from './contexts';
 import PanelSwitcher from './PanelSwitcher';
 import { ConfirmDialog } from 'primereact/confirmdialog';
 import CustomizerPanel from './CustomizerPanel';
+import SourceUpdater from './SourceUpdater';
 
 
 // import "primereact/resources/themes/lara-light-indigo/theme.css";
@@ -77,6 +78,7 @@ export function App({initialState, statePersister, fs}: {initialState: State, st
   return (
     <ModelContext.Provider value={model}>
       <FSContext.Provider value={fs}>
+        <SourceUpdater/>
         <div className='flex flex-column' style={{
             flex: 1,
           }}>
