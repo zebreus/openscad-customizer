@@ -1,6 +1,6 @@
 {
-  "short_name": "OpenSCAD",
-  "name": "OpenSCAD Playground",
+  "short_name": "Customizer",
+  "name": "OpenSCAD Customizer",
   "icons": [
     {
       "src": "favicon.ico",
