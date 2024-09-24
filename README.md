@@ -1,10 +1,10 @@
 # OpenSCAD Customizer
 
-[Open the Demo](https://zebreus.github.io/openscad-playground/?src=https://raw.githubusercontent.com/zebreus/parametric-cat-ears/refs/heads/main/cat-ears.scad)
+[Open the Demo](https://custom.wirs.ing/?src=https://raw.githubusercontent.com/zebreus/parametric-cat-ears/refs/heads/main/cat-ears.scad)
 
-This is a stripped down version of [OpenSCAD playground](https://github.com/openscad/openscad-playground) with everything but the customizer removed. It also allows you to customize your own files from urls like `https://zebreus.github.io/openscad-playground/?src=<URL_TO_SCAD_FILE>`
+This is a stripped down version of [OpenSCAD playground](https://github.com/openscad/openscad-playground) with everything but the customizer removed. It also allows you to customize your own files from urls like `https://custom.wirs.ing/?src=<URL_TO_SCAD_FILE>`
 
-Here is a working example link: https://zebreus.github.io/openscad-playground/?src=https://raw.githubusercontent.com/zebreus/parametric-cat-ears/refs/heads/main/cat-ears.scad
+Here is a working example link: https://custom.wirs.ing/?src=https://raw.githubusercontent.com/zebreus/parametric-cat-ears/refs/heads/main/cat-ears.scad
 
 This project is really just [OpenSCAD playground](https://github.com/openscad/openscad-playground) so look at their Readme for more details. Also give them a star.
 
